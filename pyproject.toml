@@ -1,0 +1,32 @@
+[project]
+name = "translation-subtitles"
+version = "0.1.0"
+description = "Windows-friendly desktop app for generating Simplified Chinese subtitles from videos."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "faster-whisper>=1.1.0",
+  "openai>=1.40.0",
+  "python-dotenv>=1.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pyinstaller>=6.0.0",
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+translation-subtitles = "translation_subtitles.cli:main"
+translation-subtitles-gui = "translation_subtitles.app:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
